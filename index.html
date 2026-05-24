@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Happy Birthday Ngọc Trâm 🌸</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--pink:#e91e8c;--deep:#880e4f;--light:#fce4ec;--petal:#f8bbd9;}
+html,body{height:100%;width:100%;overflow:hidden;font-family:'Quicksand',sans-serif;background:#fce4ec;touch-action:none;}
+
+.hearts-bg{position:fixed;inset:0;pointer-events:none;z-index:0;}
+.heart-float{position:absolute;animation:floatHeart linear infinite;opacity:0.2;}
+@keyframes floatHeart{0%{transform:translateY(100vh) scale(0.8);opacity:0;}10%{opacity:0.2;}90%{opacity:0.15;}100%{transform:translateY(-10vh) scale(1.2);opacity:0;}}
+
+.screen{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.5s ease;z-index:1;}
+.screen.active{opacity:1;pointer-events:all;}
+
+.screen-transition{position:fixed;inset:0;background:radial-gradient(circle,#fff 0%,#ffd6e7 100%);z-index:100;opacity:0;pointer-events:none;transition:opacity 0.35s ease;}
+.screen-transition.flash{opacity:1;}
+#slashCanvas{position:fixed;inset:0;z-index:50;pointer-events:none;}
+
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.55;}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+
+.bunting-svg{position:absolute;top:0;left:0;right:0;height:80px;pointer-events:none;z-index:3;}
+
+.hbd-top{
+  position:absolute;top:8px;left:50%;transform:translateX(-50%);
+  font-family:'Dancing Script',cursive;
+  font-size:clamp(1.8rem,7vw,2.8rem);font-weight:700;
+  color:#e91e8c;
+  text-shadow:3px 3px 0 #c2185b,5px 5px 0 #ad1457,0 0 28px rgba(233,30,140,0.3);
+  white-space:nowrap;z-index:4;line-height:1;
+  animation:hbdPop 0.8s cubic-bezier(0.34,1.56,0.64,1) both 0.2s;
+}
+.hbd-top-right{
+  position:absolute;top:8px;right:12px;
+  font-family:'Dancing Script',cursive;
+  font-size:clamp(1.5rem,5.5vw,2.4rem);font-weight:700;
+  color:#e91e8c;
+  text-shadow:2px 2px 0 #c2185b,4px 4px 0 #ad1457;
+  line-height:1.1;z-index:4;
+  animation:hbdPopR 0.6s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+@keyframes hbdPop{0%{opacity:0;transform:translateX(-50%) scale(0.5) rotate(-8deg);}100%{opacity:1;transform:translateX(-50%) scale(1) rotate(0deg);}}
+@keyframes hbdPopR{0%{opacity:0;transform:scale(0.5) rotate(-8deg);}100%{opacity:1;transform:scale(1) rotate(0deg);}}
+
+/* ══ LOGIN ══ */
+/* Nền tối hơn để chữ nổi rõ */
+#screenLogin{
+  background:linear-gradient(145deg,#6a0035 0%,#a0005a 35%,#7b0045 65%,#3d001f 100%);
+  z-index:10;
+}
+.login-bg-deco{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.deco-circle{position:absolute;border-radius:50%;opacity:0.08;}
+.deco-c1{width:350px;height:350px;background:white;top:-80px;left:-80px;animation:driftC 8s ease-in-out infinite;}
+.deco-c2{width:250px;height:250px;background:white;bottom:-60px;right:-60px;animation:driftC 10s ease-in-out infinite reverse;}
+.deco-c3{width:180px;height:180px;background:#fdd835;top:40%;right:-40px;animation:driftC 7s ease-in-out infinite 2s;}
+@keyframes driftC{0%,100%{transform:translate(0,0);}50%{transform:translate(20px,-20px);}}
+.login-petals{position:absolute;inset:0;pointer-events:none;}
+.petal{position:absolute;animation:petalFall linear infinite;opacity:0.35;}
+@keyframes petalFall{0%{transform:translateY(-50px) rotate(0deg);opacity:0;}10%{opacity:0.35;}100%{transform:translateY(110vh) rotate(720deg) translateX(40px);opacity:0;}}
+
+.login-card{
+  position:relative;z-index:2;
+  background:rgba(255,255,255,0.14);
+  backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
+  border:1.5px solid rgba(255,255,255,0.35);
+  border-radius:32px;padding:44px 36px 36px;
+  width:min(360px,90vw);
+  box-shadow:0 30px 80px rgba(0,0,0,0.45),inset 0 0 0 1px rgba(255,255,255,0.12);
+  animation:cardIn 0.9s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+@keyframes cardIn{0%{opacity:0;transform:translateY(60px) scale(0.9);}100%{opacity:1;transform:none;}}
+.login-logo{text-align:center;margin-bottom:28px;}
+.ll-icon{width:72px;height:72px;background:linear-gradient(135deg,var(--pink),var(--deep));border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:2rem;box-shadow:0 12px 30px rgba(233,30,140,0.5);animation:llFloat 3s ease-in-out infinite;border:3px solid rgba(255,255,255,0.5);}
+@keyframes llFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+/* Chữ title login sáng hơn */
+.ll-title{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-style:italic;color:#fff;text-shadow:0 2px 16px rgba(0,0,0,0.5),0 0 30px rgba(255,150,200,0.4);margin-top:10px;font-weight:600;}
+.ll-sub{font-size:0.82rem;color:rgba(255,255,255,0.85);margin-top:4px;letter-spacing:0.08em;text-shadow:0 1px 6px rgba(0,0,0,0.4);}
+.lf{margin-bottom:18px;}
+/* Label chữ trắng đậm hơn */
+.lf label{display:block;font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.95);margin-bottom:8px;text-shadow:0 1px 4px rgba(0,0,0,0.4);}
+.iw{position:relative;}
+.iw .ii{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1.1rem;pointer-events:none;opacity:0.85;}
+.lf input{width:100%;padding:14px 14px 14px 44px;background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,255,255,0.45);border-radius:14px;color:#fff;font-size:1rem;font-family:'Quicksand',sans-serif;font-weight:600;outline:none;transition:all 0.3s;backdrop-filter:blur(8px);}
+.lf input::placeholder{color:rgba(255,255,255,0.55);}
+.lf input:focus{border-color:rgba(255,255,255,0.9);background:rgba(255,255,255,0.22);box-shadow:0 0 0 4px rgba(255,255,255,0.12);}
+.lf input.shake{animation:shake 0.4s;}
+@keyframes shake{0%,100%{transform:none;}20%,60%{transform:translateX(-8px);}40%,80%{transform:translateX(8px);}}
+.l-btn{width:100%;padding:15px;margin-top:6px;background:linear-gradient(135deg,#ff6eb0,#e91e8c,#c2185b);border:none;border-radius:14px;cursor:pointer;font-family:'Dancing Script',cursive;font-size:1.4rem;color:#fff;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,0.35);transition:all 0.25s;text-shadow:0 2px 8px rgba(0,0,0,0.3);}
+.l-btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,0.45);}
+.l-btn:active{transform:translateY(1px);}
+.l-err{text-align:center;font-size:0.85rem;color:#fff;background:rgba(183,28,28,0.65);border-radius:10px;padding:8px 14px;margin-top:12px;display:none;animation:fadeIn 0.3s;}
+.l-hint{text-align:center;margin-top:18px;font-size:0.8rem;color:rgba(255,255,255,0.65);letter-spacing:0.06em;}
+
+/* ══ SCREEN 1 ══ */
+#screen1{background:radial-gradient(ellipse at center,#ffd6e7 0%,#fce4ec 60%,#f8bbd9 100%);}
+.gift-wrap{cursor:pointer;animation:gBounce 1.8s ease-in-out infinite;filter:drop-shadow(0 20px 30px rgba(233,30,140,0.3));transition:transform 0.15s;}
+.gift-wrap:active{transform:scale(0.93)!important;animation:none;}
+@keyframes gBounce{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(-18px) rotate(2deg);}}
+.tap-hint{margin-top:28px;font-family:'Dancing Script',cursive;font-size:1.6rem;color:#880e4f;animation:pulse 2s ease-in-out infinite;}
+.s1-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.5rem;color:var(--deep);margin-bottom:16px;opacity:0.8;}
+
+/* ══ SCREEN 2 ══ */
+#screen2{background:radial-gradient(ellipse 100% 80% at 50% 80%,#fff8fb 0%,#fce4ec 40%,#f8bbd9 100%);overflow:hidden;}
+.s2-cloud{position:absolute;border-radius:50px;background:rgba(255,255,255,0.78);pointer-events:none;}
+.sc-bl{width:190px;height:72px;border-radius:50px;bottom:58px;left:-30px;}
+.sc-bl::before{content:'';position:absolute;width:115px;height:94px;border-radius:50%;background:rgba(255,255,255,0.78);top:-42px;left:20px;}
+.sc-br{width:170px;height:66px;border-radius:50px;bottom:52px;right:-20px;}
+.sc-br::before{content:'';position:absolute;width:105px;height:82px;border-radius:50%;background:rgba(255,255,255,0.78);top:-36px;right:18px;}
+#cakeCanvas{display:block;z-index:2;margin-top:78px;}
+
+/* Nút + hint đẩy xuống thấp hơn, không đè bánh */
+.cake-bottom-bar{
+  position:absolute;bottom:14px;left:0;right:0;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  z-index:6;
+}
+.blow-btn{
+  background:white;border:none;border-radius:40px;
+  padding:11px 28px;
+  font-family:'Quicksand',sans-serif;font-size:0.95rem;font-weight:600;
+  color:#c2185b;cursor:pointer;
+  box-shadow:0 6px 24px rgba(233,30,140,0.22);
+  display:flex;align-items:center;gap:8px;transition:all 0.2s;
+}
+.blow-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(233,30,140,0.32);}
+.blow-btn:active{transform:scale(0.96);}
+/* Hint nhỏ gọn hơn, không làm vướng */
+.slash-hint2{
+  font-family:'Dancing Script',cursive;font-size:1.05rem;
+  color:#880e4f;animation:pulse 2s ease-in-out infinite;
+  text-align:center;width:100%;pointer-events:none;
+  opacity:0.85;
+}
+
+/* ══ SCREEN 3 ══ */
+#screen3{background:radial-gradient(ellipse 70% 60% at 50% 70%,#fff 0%,#fce4ec 50%,#f8bbd9 100%);overflow:hidden;}
+.env-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-52%);width:min(320px,78vw);height:min(320px,78vw);border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,0.9) 0%,rgba(252,228,236,0.5) 60%,transparent 100%);pointer-events:none;}
+.bunny{position:absolute;bottom:88px;font-size:2rem;animation:bunnyB 2s ease-in-out infinite;}
+.bunny-l{left:8%;}.bunny-r{right:8%;animation-delay:0.5s;}
+@keyframes bunnyB{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.ec{position:absolute;border-radius:50px;background:white;opacity:0.72;pointer-events:none;}
+.ec1{width:200px;height:72px;bottom:-15px;left:-40px;}
+.ec2{width:150px;height:58px;bottom:12px;left:25px;}
+.ec3{width:175px;height:66px;bottom:-8px;right:-28px;}
+.ec4{width:135px;height:54px;bottom:18px;right:18px;}
+.env-wrap{position:relative;z-index:5;cursor:pointer;animation:envF 3s ease-in-out infinite;}
+@keyframes envF{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.env-wrap.opening{animation:none;}
+.env-outer{position:relative;width:min(280px,76vw);filter:drop-shadow(0 20px 50px rgba(233,30,140,0.18));}
+.env-body{width:100%;padding-top:62%;background:white;border-radius:4px 4px 14px 14px;border:1.5px solid rgba(200,180,200,0.35);position:relative;overflow:hidden;}
+.env-inner{position:absolute;inset:0;background:linear-gradient(180deg,#fce4ec 0%,white 65%);}
+.env-fold-b{position:absolute;bottom:0;left:0;right:0;height:55%;background:white;clip-path:polygon(0% 100%,50% 0%,100% 100%);border-top:1px solid rgba(200,180,200,0.25);}
+.env-fold-l{position:absolute;top:0;left:0;width:50%;height:100%;background:rgba(248,187,217,0.12);clip-path:polygon(0 0,100% 50%,0 100%);}
+.env-fold-r{position:absolute;top:0;right:0;width:50%;height:100%;background:rgba(248,187,217,0.08);clip-path:polygon(100% 0,0 50%,100% 100%);}
+.env-flap{position:absolute;top:0;left:0;right:0;height:55%;transform-origin:top center;transition:transform 0.85s cubic-bezier(0.4,0,0.2,1);z-index:10;pointer-events:none;}
+.env-flap-in{width:100%;height:100%;background:white;clip-path:polygon(0 0,100% 0,50% 100%);border:1.5px solid rgba(200,180,200,0.3);border-bottom:none;}
+.env-flap.open{transform:rotateX(-185deg);}
+.wax-seal{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;z-index:20;cursor:pointer;}
+.wax-circle{width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#e53935,#b71c1c);display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 18px rgba(183,28,28,0.5),inset 0 2px 4px rgba(255,255,255,0.2);animation:sealP 2s ease-in-out infinite;}
+@keyframes sealP{0%,100%{box-shadow:0 4px 18px rgba(183,28,28,0.5),0 0 0 0 rgba(233,30,140,0.4);}50%{box-shadow:0 4px 18px rgba(183,28,28,0.5),0 0 0 14px rgba(233,30,140,0);}}
+.wax-seal.gone{animation:sealGone 0.35s forwards;}
+@keyframes sealGone{0%{transform:translate(-50%,-50%) scale(1);opacity:1;}60%{transform:translate(-50%,-50%) scale(1.4);opacity:0.5;}100%{transform:translate(-50%,-50%) scale(0);opacity:0;}}
+.env-hint3{position:absolute;bottom:22px;font-family:'Dancing Script',cursive;font-size:1.2rem;color:#880e4f;animation:pulse 2s ease-in-out infinite;text-align:center;width:100%;z-index:6;}
+
+/* ══ LETTER OVERLAY ══ */
+#letterOverlay{position:fixed;inset:0;z-index:80;display:flex;align-items:center;justify-content:center;background:rgba(252,228,236,0.65);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);opacity:0;pointer-events:none;transition:opacity 0.5s;padding:16px;}
+#letterOverlay.show{opacity:1;pointer-events:all;}
+.letter-card-full{background:linear-gradient(160deg,#fffef9 0%,#fff0f6 100%);border-radius:20px;width:100%;max-width:430px;max-height:88vh;overflow-y:auto;padding:42px 28px 28px;position:relative;box-shadow:0 24px 80px rgba(233,30,140,0.2),0 0 0 1px rgba(244,143,177,0.25);animation:letterRise 0.6s cubic-bezier(0.34,1.2,0.64,1) both;}
+@keyframes letterRise{0%{transform:translateY(50px);opacity:0;}100%{transform:none;opacity:1;}}
+.letter-paper{background-image:repeating-linear-gradient(transparent,transparent 30px,rgba(244,143,177,0.18) 30px,rgba(244,143,177,0.18) 31px);padding-top:4px;min-height:200px;position:relative;}
+.letter-paper::before{content:'';position:absolute;left:42px;top:0;bottom:80px;width:1.5px;background:rgba(233,30,140,0.1);}
+.letter-title{font-family:'Dancing Script',cursive;font-size:1.35rem;font-weight:700;color:#c2185b;text-align:center;margin-bottom:18px;padding-bottom:12px;border-bottom:1.5px dashed rgba(244,143,177,0.4);line-height:1.45;}
+.letter-body{font-family:'Dancing Script',cursive;font-size:1.12rem;color:#444;line-height:1.9;padding-left:12px;}
+.letter-footer3{display:flex;justify-content:space-between;align-items:flex-end;margin-top:22px;padding-top:14px;border-top:1px dashed rgba(244,143,177,0.35);}
+.lf3-right{font-family:'Dancing Script',cursive;text-align:right;}
+.lf3-right .lt1{display:block;font-size:1.05rem;font-weight:700;color:var(--pink);}
+.lf3-right .lt2{display:block;font-size:0.9rem;color:var(--deep);}
+.continue-btn{display:block;width:100%;margin-top:22px;padding:14px;background:linear-gradient(135deg,var(--pink),var(--deep));border:none;border-radius:14px;cursor:pointer;font-family:'Dancing Script',cursive;font-size:1.3rem;color:white;font-weight:700;box-shadow:0 8px 24px rgba(233,30,140,0.35);transition:all 0.2s;}
+.continue-btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(233,30,140,0.45);}
+.continue-btn:active{transform:translateY(1px);}
+
+/* ══ SCREEN 4 ══ */
+#screen4{background:radial-gradient(ellipse 100% 80% at 50% 80%,#fff8fb 0%,#fce4ec 40%,#f8bbd9 100%);overflow:hidden;}
+#heartCanvas{display:block;z-index:2;margin-top:80px;}
+.s4-cloud{position:absolute;border-radius:50px;background:rgba(255,255,255,0.72);pointer-events:none;}
+.s4-cl{width:160px;height:60px;bottom:24px;left:-20px;}
+.s4-cl::before{content:'';position:absolute;width:92px;height:78px;border-radius:50%;background:rgba(255,255,255,0.72);top:-32px;left:16px;}
+.s4-cr{width:150px;height:56px;bottom:20px;right:-15px;}
+.s4-cr::before{content:'';position:absolute;width:86px;height:72px;border-radius:50%;background:rgba(255,255,255,0.72);top:-28px;right:14px;}
+
+/* ══ SCREEN 5 ══ */
+#screen5{background:radial-gradient(ellipse 110% 90% at 50% 100%,#fff8fb 0%,#fce4ec 50%,#f8bbd9 100%);overflow:hidden;}
+#balloonCanvas{position:absolute;inset:0;width:100%;height:100%;}
+
+.confetti-piece{position:fixed;top:-10px;pointer-events:none;z-index:999;animation:confettiFall linear forwards;}
+@keyframes confettiFall{0%{transform:translateY(0) rotate(0deg);opacity:1;}100%{transform:translateY(110vh) rotate(720deg);opacity:0.3;}}
+
+.restart-btn{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--pink),var(--deep));border:none;border-radius:40px;padding:12px 30px;font-family:'Dancing Script',cursive;font-size:1.15rem;color:white;font-weight:700;cursor:pointer;box-shadow:0 6px 20px rgba(233,30,140,0.3);transition:all 0.2s;white-space:nowrap;z-index:5;}
+.restart-btn:hover{transform:translateX(-50%) translateY(-2px);}
+
+/* ══ MUSIC BUTTON ══ */
+#musicBtn{
+  position:fixed;bottom:16px;right:16px;z-index:200;
+  width:42px;height:42px;border-radius:50%;
+  background:rgba(233,30,140,0.18);
+  backdrop-filter:blur(10px);border:1.5px solid rgba(233,30,140,0.35);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;cursor:pointer;transition:all 0.25s;
+  box-shadow:0 4px 16px rgba(233,30,140,0.2);
+  opacity:0;pointer-events:none;
+}
+#musicBtn.visible{opacity:1;pointer-events:all;}
+#musicBtn:hover{transform:scale(1.1);background:rgba(233,30,140,0.28);}
+#musicBtn.playing{animation:musicPulse 1.5s ease-in-out infinite;}
+@keyframes musicPulse{0%,100%{box-shadow:0 4px 16px rgba(233,30,140,0.2),0 0 0 0 rgba(233,30,140,0.3);}50%{box-shadow:0 4px 16px rgba(233,30,140,0.2),0 0 0 10px rgba(233,30,140,0);}}
+</style>
+</head>
+<body>
+<div class="hearts-bg" id="heartsBg"></div>
+<div class="screen-transition" id="transition"></div>
+<canvas id="slashCanvas"></canvas>
+
+<!-- MUSIC BUTTON -->
+<button id="musicBtn" onclick="toggleMusic()" title="Bật/tắt nhạc">🎵</button>
+
+<!-- LETTER OVERLAY -->
+<div id="letterOverlay">
+  <div class="letter-card-full">
+    <div class="letter-paper">
+      <div class="letter-title">Hôm nay em là nhất,<br>công chúa nhỏ ạ!</div>
+      <div class="letter-body" id="letterBody"></div>
+    </div>
+    <div class="letter-footer3">
+      <div style="font-size:1.8rem">🌸</div>
+      <div class="lf3-right">
+        <span class="lt1">Happy Birthday!</span>
+        <span class="lt2">24 - 07 - 2025</span>
+      </div>
+    </div>
+    <button class="continue-btn" onclick="showHeartScreen()">Tiếp tục →</button>
+  </div>
+</div>
+
+<!-- LOGIN -->
+<div class="screen active" id="screenLogin">
+  <div class="login-bg-deco">
+    <div class="deco-circle deco-c1"></div>
+    <div class="deco-circle deco-c2"></div>
+    <div class="deco-circle deco-c3"></div>
+  </div>
+  <div class="login-petals" id="loginPetals"></div>
+  <div class="login-card">
+    <div class="login-logo">
+      <div class="ll-icon">🌸</div>
+      <div class="ll-title">Dành riêng cho em</div>
+      <div class="ll-sub">✦ A LITTLE SURPRISE AWAITS ✦</div>
+    </div>
+    <div class="lf">
+      <label>Tên của em</label>
+      <div class="iw"><span class="ii">🌷</span>
+        <input type="text" id="loginName" placeholder="Nhập tên của em..." autocomplete="off" autocorrect="off" spellcheck="false"/>
+      </div>
+    </div>
+    <div class="lf">
+      <label>Mật khẩu bí mật</label>
+      <div class="iw"><span class="ii">🔑</span>
+        <input type="password" id="loginPass" placeholder="Nhập mật khẩu..." autocomplete="off"/>
+      </div>
+    </div>
+    <button class="l-btn" id="loginBtn" onclick="doLogin()">Mở quà của em 🎁</button>
+    <div class="l-err" id="loginError">❌ Sai rồi nha em yêu~ Thử lại đi 🥺</div>
+    <div class="l-hint">✦ &nbsp;Chỉ dành riêng cho một người thôi&nbsp; ✦</div>
+  </div>
+</div>
+
+<!-- SCREEN 1 -->
+<div class="screen" id="screen1">
+  <p class="s1-title">Có quà dành cho em nè 🌸</p>
+  <div class="gift-wrap" onclick="openGift()" id="giftBox">
+    <svg width="210" height="220" viewBox="0 0 210 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="bxG" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ef5350"/><stop offset="100%" stop-color="#b71c1c"/></linearGradient>
+        <linearGradient id="ldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e53935"/><stop offset="100%" stop-color="#c62828"/></linearGradient>
+        <linearGradient id="bwG" x1="0" y1="1" x2="1" y2="0"><stop offset="0%" stop-color="#f9a825"/><stop offset="100%" stop-color="#fff176"/></linearGradient>
+      </defs>
+      <ellipse cx="105" cy="210" rx="70" ry="10" fill="rgba(180,0,80,0.2)"/>
+      <rect x="30" y="108" width="150" height="92" rx="8" fill="url(#bxG)"/>
+      <rect x="38" y="116" width="32" height="76" rx="4" fill="rgba(255,255,255,0.1)"/>
+      <rect x="22" y="90" width="166" height="28" rx="7" fill="url(#ldG)"/>
+      <rect x="95" y="90" width="20" height="110" fill="#fdd835"/>
+      <rect x="95" y="90" width="10" height="110" fill="rgba(255,255,255,0.2)"/>
+      <rect x="22" y="96" width="166" height="14" fill="#fdd835"/>
+      <ellipse cx="82" cy="74" rx="32" ry="16" fill="url(#bwG)" transform="rotate(-28 82 74)"/>
+      <ellipse cx="82" cy="74" rx="22" ry="10" fill="#fbc02d" transform="rotate(-28 82 74)"/>
+      <ellipse cx="124" cy="74" rx="32" ry="16" fill="url(#bwG)" transform="rotate(28 124 74)"/>
+      <ellipse cx="124" cy="74" rx="22" ry="10" fill="#fbc02d" transform="rotate(28 124 74)"/>
+      <ellipse cx="105" cy="80" rx="14" ry="11" fill="#ffca28"/>
+      <ellipse cx="105" cy="79" rx="9" ry="7" fill="#fff176"/>
+      <text x="18" y="55" font-size="14" opacity="0.7">✨</text>
+      <text x="175" y="48" font-size="12" opacity="0.6">⭐</text>
+      <text x="185" y="165" font-size="11" opacity="0.6">✨</text>
+    </svg>
+  </div>
+  <p class="tap-hint">Nhấn vào hộp quà 🎁</p>
+</div>
+
+<!-- SCREEN 2 -->
+<div class="screen" id="screen2">
+  <svg class="bunting-svg" viewBox="0 0 400 72" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+    <path d="M5 14 Q100 4 200 16 Q300 4 395 14" stroke="#c8a97e" stroke-width="2.5" fill="none"/>
+    <polygon points="22,14 46,14 34,44" fill="#f48fb1" opacity="0.9"/>
+    <polygon points="50,12 74,12 62,42" fill="white" stroke="#f48fb1" stroke-width="1.5"/>
+    <text x="62" y="28" font-size="9" text-anchor="middle" fill="#f48fb1">♥</text>
+    <polygon points="78,10 102,10 90,40" fill="#f48fb1" opacity="0.75"/>
+    <polygon points="106,9 130,9 118,39" fill="white" stroke="#f48fb1" stroke-width="1.5"/>
+    <polygon points="134,8 158,8 146,38" fill="#f48fb1" opacity="0.9"/>
+    <polygon points="260,8 284,8 272,38" fill="#f48fb1" opacity="0.75"/>
+    <polygon points="288,9 312,9 300,39" fill="white" stroke="#f48fb1" stroke-width="1.5"/>
+    <polygon points="316,10 340,10 328,40" fill="#f48fb1" opacity="0.9"/>
+    <polygon points="344,12 368,12 356,42" fill="white" stroke="#f48fb1" stroke-width="1.5"/>
+    <text x="300" y="26" font-size="9" text-anchor="middle" fill="#f48fb1">♥</text>
+    <polygon points="372,14 396,14 384,44" fill="#f48fb1" opacity="0.75"/>
+    <circle cx="5" cy="14" r="4" fill="#c8a97e"/>
+    <circle cx="395" cy="14" r="4" fill="#c8a97e"/>
+  </svg>
+  <div class="hbd-top">Happy Birthday! 🎂</div>
+  <div class="s2-cloud sc-bl"></div>
+  <div class="s2-cloud sc-br"></div>
+  <canvas id="cakeCanvas"></canvas>
+  <!-- Thanh nút đẩy xuống cùng, không đè bánh -->
+  <div class="cake-bottom-bar">
+    <button class="blow-btn" id="blowBtn" onclick="blowCandle()">🕯️ Thổi nến sinh nhật</button>
+    <p class="slash-hint2" id="slashHint2">⚡ Hoặc vuốt nhanh qua màn hình để cắt bánh ⚡</p>
+  </div>
+</div>
+
+<!-- SCREEN 3 -->
+<div class="screen" id="screen3">
+  <svg class="bunting-svg" viewBox="0 0 400 72" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+    <path d="M5 14 Q100 4 200 16 Q300 4 395 14" stroke="#c8a97e" stroke-width="2.5" fill="none"/>
+    <polygon points="22,14 46,14 34,44" fill="#f48fb1" opacity="0.9"/>
+    <polygon points="50,12 74,12 62,42" fill="white" stroke="#f48fb1" stroke-width="1.5"/>
+    <text x="62" y="28" font-size="9" text-anchor="middle" fill="#f48fb1">♥</text>
+    <polygon points="78,10 102,10 90,40" fill="#f48fb1" opacity="0.75"/>
+    <polygon points="316,10 340,10 328,40" fill="#f48fb1" opacity="0.9"/>
+    <polygon points="372,14 396,14 384,44" fill="#f48fb1" opacity="0.75"/>
+    <circle cx="5" cy="14" r="4" fill="#c8a97e"/>
+    <circle cx="395" cy="14" r="4" fill="#c8a97e"/>
+  </svg>
+  <div class="hbd-top-right">Happy<br>Birthday!</div>
+  <div class="env-glow"></div>
+  <div class="ec ec1"></div><div class="ec ec2"></div>
+  <div class="ec ec3"></div><div class="ec ec4"></div>
+  <div class="bunny bunny-l">🐰</div>
+  <div class="bunny bunny-r">🐰</div>
+  <div class="env-wrap" id="envWrap">
+    <div class="env-outer">
+      <div class="env-body">
+        <div class="env-inner"></div>
+        <div class="env-fold-l"></div>
+        <div class="env-fold-r"></div>
+        <div class="env-fold-b"></div>
+      </div>
+      <div class="env-flap" id="envFlap"><div class="env-flap-in"></div></div>
+      <div class="wax-seal" id="waxSeal" onclick="openEnvelope()">
+        <div class="wax-circle">❤️</div>
+      </div>
+    </div>
+  </div>
+  <p class="env-hint3" id="envHint3">💌 Bấm vào trái tim để mở thư 💌</p>
+</div>
+
+<!-- SCREEN 4 -->
+<div class="screen" id="screen4">
+  <svg class="bunting-svg" viewBox="0 0 400 68" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+    <path d="M5 12 Q100 2 200 14 Q300 2 395 12" stroke="#c8a97e" stroke-width="2.5" fill="none"/>
+    <polygon points="22,12 46,12 34,42" fill="#f48fb1" opacity="0.9"/>
+    <polygon points="50,10 74,10 62,40" fill="white" stroke="#f48fb1" stroke-width="1.5"/>
+    <text x="62" y="26" font-size="9" text-anchor="middle" fill="#f48fb1">♥</text>
+    <polygon points="78,8 102,8 90,38" fill="#f48fb1" opacity="0.75"/>
+    <polygon points="106,7 130,7 118,37" fill="white" stroke="#f48fb1" stroke-width="1.5"/>
+    <polygon points="260,8 284,8 272,38" fill="#f48fb1" opacity="0.75"/>
+    <polygon points="288,9 312,9 300,39" fill="white" stroke="#f48fb1" stroke-width="1.5"/>
+    <polygon points="316,8 340,8 328,38" fill="#f48fb1" opacity="0.9"/>
+    <polygon points="372,12 396,12 384,42" fill="#f48fb1" opacity="0.75"/>
+    <circle cx="5" cy="12" r="4" fill="#c8a97e"/>
+    <circle cx="395" cy="12" r="4" fill="#c8a97e"/>
+  </svg>
+  <div class="hbd-top">Happy Birthday! 🌸</div>
+  <div class="s4-cloud s4-cl"></div>
+  <div class="s4-cloud s4-cr"></div>
+  <canvas id="heartCanvas"></canvas>
+</div>
+
+<!-- SCREEN 5 -->
+<div class="screen" id="screen5">
+  <svg class="bunting-svg" viewBox="0 0 400 72" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" style="z-index:4;">
+    <path d="M5 14 Q100 4 200 16 Q300 4 395 14" stroke="#c8a97e" stroke-width="2.5" fill="none"/>
+    <polygon points="22,14 46,14 34,44" fill="#f48fb1" opacity="0.9"/>
+    <polygon points="50,12 74,12 62,42" fill="white" stroke="#f48fb1" stroke-width="1.5"/>
+    <text x="62" y="28" font-size="9" text-anchor="middle" fill="#f48fb1">♥</text>
+    <polygon points="78,10 102,10 90,40" fill="#f48fb1" opacity="0.75"/>
+    <polygon points="106,9 130,9 118,39" fill="white" stroke="#f48fb1" stroke-width="1.5"/>
+    <polygon points="134,8 158,8 146,38" fill="#f48fb1" opacity="0.9"/>
+    <polygon points="260,8 284,8 272,38" fill="#f48fb1" opacity="0.75"/>
+    <polygon points="288,9 312,9 300,39" fill="white" stroke="#f48fb1" stroke-width="1.5"/>
+    <polygon points="316,10 340,10 328,40" fill="#f48fb1" opacity="0.9"/>
+    <polygon points="344,12 368,12 356,42" fill="white" stroke="#f48fb1" stroke-width="1.5"/>
+    <polygon points="372,14 396,14 384,44" fill="#f48fb1" opacity="0.75"/>
+    <circle cx="5" cy="14" r="4" fill="#c8a97e"/>
+    <circle cx="395" cy="14" r="4" fill="#c8a97e"/>
+  </svg>
+  <div class="hbd-top" style="font-size:clamp(1.5rem,5.5vw,2.2rem);">Happy Birthday Ngọc Trâm 🌸</div>
+  <canvas id="balloonCanvas"></canvas>
+  <button class="restart-btn" onclick="restartAll()">🔄 Xem lại từ đầu</button>
+</div>
+
+<script>
+/* ═══ ẢNH ═══ */
+const PHOTOS = [
+  './anh/1.jpg',
+  './anh/2.jpg',
+  './anh/3.jfif',
+  './anh/4.jpg',
+  '', '', '', '', '', '', '', '',
+];
+const PHOTO_PALETTES = [
+  ['#e8c9a0','#c4925e','#d4a87a','#9a6840'],
+  ['#b8d4a8','#6a9858','#94bc7c','#4a7838'],
+  ['#f0c4c8','#d4848c','#e4a0a6','#b06470'],
+  ['#c4d8ec','#7aa4c4','#a0c0dc','#5888a8'],
+  ['#f0dca8','#d0ac58','#e0c480','#a88838'],
+  ['#d4b8e8','#9878c0','#bc98d8','#7458a0'],
+  ['#f8d8c0','#e0a070','#ecca98','#c47840'],
+  ['#c8e4d4','#78b898','#a4d0bc','#549878'],
+  ['#f0ccd8','#d08ca4','#e4aec0','#b06c84'],
+  ['#d8e8c4','#98bc74','#bcd89c','#789c58'],
+  ['#e8d4b8','#c09870','#d4b890','#987050'],
+  ['#c8d4ec','#7888c8','#a4b0dc','#5868a8'],
+];
+
+/* ═══ IMAGE CACHE ═══ */
+const imgCache = {};
+PHOTOS.forEach((url, i) => {
+  if (url) { const img = new Image(); img.crossOrigin='anonymous'; img.src=url; imgCache[i]=img; }
+});
+
+/* ═══ FLOATING HEARTS ═══ */
+const hbEl = document.getElementById('heartsBg');
+['💕','💗','💖','🌸','✨','💓','♥','🌷'].forEach(e => {
+  for(let j=0;j<2;j++){
+    const h=document.createElement('div');h.className='heart-float';h.textContent=e;
+    h.style.cssText=`left:${Math.random()*100}vw;font-size:${0.8+Math.random()*1.1}rem;animation-duration:${7+Math.random()*8}s;animation-delay:${Math.random()*10}s`;
+    hbEl.appendChild(h);
+  }
+});
+
+/* ═══ LOGIN PETALS ═══ */
+['🌸','🌷','🌺','💮'].forEach(e=>{
+  for(let j=0;j<5;j++){
+    const p=document.createElement('div');p.className='petal';p.textContent=e;
+    p.style.cssText=`left:${Math.random()*100}vw;animation-duration:${4+Math.random()*5}s;animation-delay:${Math.random()*8}s;font-size:${0.85+Math.random()}rem`;
+    document.getElementById('loginPetals').appendChild(p);
+  }
+});
+
+/* ═══ LETTER ═══ */
+document.getElementById('letterBody').innerHTML =
+  'Ngày hôm nay là ngày sinh nhật của em — ngày mà anh luôn muốn biến thành một câu chuyện cổ tích. Em muốn là người duy nhất được quyết định mọi thứ: đi đâu, ăn gì, thậm chí là cách anh sẽ yêu em hôm nay 🌸<br><br>' +
+  'Cảm ơn em vì đã luôn ở bên anh, vì nụ cười của em làm anh thấy mọi ngày đều đáng sống hơn. Em xứng đáng nhận được tất cả những điều ngọt ngào nhất trên đời này.<br><br>' +
+  'Anh yêu em rất nhiều — hôm nay và mãi mãi ❤️';
+
+/* ═══════════════════════════════════════
+   MUSIC  –  dùng Web Audio API tạo nhạc
+   Happy Birthday To You bằng beep tone
+   Không cần file nhạc ngoài
+═══════════════════════════════════════ */
+let audioCtx = null, musicPlaying = false, musicNodes = [];
+
+// Nốt nhạc Happy Birthday To You (tần số Hz + độ dài tính bằng beat)
+// Giọng trẻ trung, dùng oscillator sine + tremolo nhẹ
+const HBD_NOTES = [
+  // Happy Birthday to you
+  [392,0.75],[392,0.25],[440,1],[392,1],[523,1],[494,2],
+  // Happy Birthday to you
+  [392,0.75],[392,0.25],[440,1],[392,1],[587,1],[523,2],
+  // Happy Birthday dear [tên]
+  [392,0.75],[392,0.25],[784,1],[659,1],[523,1],[494,1],[440,1],
+  // Happy Birthday to you
+  [698,0.75],[698,0.25],[659,1],[523,1],[587,1],[523,2],
+];
+const BEAT = 0.42; // giây/beat – vừa phải không quá nhanh
+
+function createMusic() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  stopMusic();
+
+  const master = audioCtx.createGain();
+  master.gain.setValueAtTime(0, audioCtx.currentTime);
+  master.gain.linearRampToValueAtTime(0.32, audioCtx.currentTime + 0.3);
+  master.connect(audioCtx.destination);
+
+  // Reverb nhẹ bằng ConvolverNode đơn giản
+  const convolver = audioCtx.createConvolver();
+  const bufLen = audioCtx.sampleRate * 1.2;
+  const irBuf = audioCtx.createBuffer(2, bufLen, audioCtx.sampleRate);
+  for(let ch=0;ch<2;ch++){const d=irBuf.getChannelData(ch);for(let i=0;i<bufLen;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/bufLen,2);}
+  convolver.buffer = irBuf;
+  const reverbGain = audioCtx.createGain(); reverbGain.gain.value = 0.18;
+  convolver.connect(reverbGain); reverbGain.connect(master);
+
+  let t = audioCtx.currentTime + 0.05;
+  const noteNodes = [];
+
+  // Repeat 1.5 kali (1 lần đầy đủ + lặp lại từ đầu không kết thúc)
+  const loopNotes = [...HBD_NOTES, ...HBD_NOTES];
+
+  loopNotes.forEach(([freq, beats]) => {
+    const dur = beats * BEAT;
+
+    // Oscillator chính (sine)
+    const osc = audioCtx.createOscillator();
+    osc.type = 'sine'; osc.frequency.value = freq;
+
+    // Vibrato nhẹ
+    const lfo = audioCtx.createOscillator();
+    lfo.type = 'sine'; lfo.frequency.value = 5.5;
+    const lfoGain = audioCtx.createGain(); lfoGain.gain.value = freq * 0.012;
+    lfo.connect(lfoGain); lfoGain.connect(osc.frequency);
+
+    const envGain = audioCtx.createGain();
+    envGain.gain.setValueAtTime(0, t);
+    envGain.gain.linearRampToValueAtTime(0.55, t + 0.02);
+    envGain.gain.setValueAtTime(0.48, t + dur * 0.6);
+    envGain.gain.linearRampToValueAtTime(0, t + dur * 0.95);
+
+    osc.connect(envGain);
+    envGain.connect(master);
+    envGain.connect(convolver);
+
+    osc.start(t); osc.stop(t + dur);
+    lfo.start(t); lfo.stop(t + dur);
+    noteNodes.push(osc, lfo);
+    t += dur;
+  });
+
+  // Loop: sau khi xong thì tự chạy lại
+  const loopDuration = loopNotes.reduce((s,[,b])=>s+b*BEAT,0);
+  const loopTimer = setTimeout(()=>{ if(musicPlaying) createMusic(); }, loopDuration * 1000 - 200);
+  musicNodes = [master, ...noteNodes];
+  musicNodes._loopTimer = loopTimer;
+}
+
+function stopMusic(){
+  if(musicNodes._loopTimer) clearTimeout(musicNodes._loopTimer);
+  musicNodes.forEach(n=>{ try{ n.stop && n.stop(); n.disconnect && n.disconnect(); }catch(e){} });
+  musicNodes = [];
+}
+
+function startMusic(){
+  musicPlaying = true;
+  createMusic();
+  const btn = document.getElementById('musicBtn');
+  btn.textContent = '🎵'; btn.classList.add('playing');
+}
+
+function toggleMusic(){
+  if(musicPlaying){
+    musicPlaying = false;
+    stopMusic();
+    const btn = document.getElementById('musicBtn');
+    btn.textContent = '🔇'; btn.classList.remove('playing');
+  } else {
+    startMusic();
+  }
+}
+
+function showMusicBtn(){
+  document.getElementById('musicBtn').classList.add('visible');
+}
+
+/* ═══ SCREEN MANAGEMENT ═══ */
+let curScreen = 'Login';
+const SID = { Login:'screenLogin', 1:'screen1', 2:'screen2', 3:'screen3', 4:'screen4', 5:'screen5' };
+
+function goTo(n){
+  const t=document.getElementById('transition');
+  t.classList.add('flash');
+  setTimeout(()=>{
+    document.getElementById(SID[curScreen]).classList.remove('active');
+    curScreen=n;
+    document.getElementById(SID[n]).classList.add('active');
+    t.classList.remove('flash');
+    if(n===2) initCake();
+    if(n===3) initEnvelope();
+    if(n===4) initHeartCollage();
+    if(n===5){ initBalloons(); setTimeout(launchConfetti,400); }
+  },350);
+}
+
+/* ═══ LOGIN ═══ */
+function doLogin(){
+  const name=document.getElementById('loginName').value.trim();
+  const pass=document.getElementById('loginPass').value.trim();
+  const ok=['tram','trâm','ngoc tram','ngọc trâm','ngoctram','ngọctrâm'].includes(name.toLowerCase()) && pass==='24072007';
+  if(ok){
+    document.getElementById('loginError').style.display='none';
+    document.getElementById('loginBtn').textContent='💖 Mở ra nào~';
+    // Khởi động nhạc sau khi login thành công
+    setTimeout(()=>{
+      startMusic();
+      showMusicBtn();
+      goTo(1);
+    },600);
+  } else {
+    document.getElementById('loginError').style.display='block';
+    ['loginName','loginPass'].forEach(id=>{
+      const el=document.getElementById(id);
+      el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake');
+    });
+  }
+}
+document.getElementById('loginPass').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
+document.getElementById('loginName').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('loginPass').focus();});
+
+/* ═══ GIFT ═══ */
+function openGift(){
+  const g=document.getElementById('giftBox');
+  g.style.animation='none';g.style.transform='scale(1.25) rotate(5deg)';
+  g.style.filter='drop-shadow(0 30px 60px rgba(233,30,140,0.7))';
+  setTimeout(()=>goTo(2),320);
+}
+
+/* ═══ CAKE ═══ */
+let cakeRAF=null, cAngle=0, candleBlown=false;
+
+function initCake(){
+  candleBlown=false;
+  const blowBtn=document.getElementById('blowBtn');
+  blowBtn.style.display='flex'; blowBtn.textContent='🕯️ Thổi nến sinh nhật';
+  document.getElementById('slashHint2').style.display='block';
+
+  const cv=document.getElementById('cakeCanvas');
+  const vw=window.innerWidth, vh=window.innerHeight;
+  // Giảm kích thước canvas để chừa chỗ cho nút bên dưới
+  const cSize=Math.min(vw*0.9,(vh-220)*0.93,460);
+  const W=cSize, H=cSize;
+  const dpr=window.devicePixelRatio||1;
+  cv.width=W*dpr; cv.height=H*dpr;
+  cv.style.width=W+'px'; cv.style.height=H+'px';
+  const ctx=cv.getContext('2d'); ctx.scale(dpr,dpr);
+  if(cakeRAF)cancelAnimationFrame(cakeRAF);
+
+  const ems=['🌸','💕','✨','💗','🌷','💖','🥰','💓'];
+  const colB=['#d81b60','#c2185b','#ad1457','#e91e8c','#880e4f','#d81b60','#c2185b','#e91e8c','#ad1457','#d81b60','#880e4f','#e91e8c'];
+  const colT=['#7b1fa2','#8e24aa','#6a1b9a','#9c27b0','#7b1fa2','#8e24aa','#6a1b9a','#9c27b0'];
+  let splitProg=0, isSplit=false, splitDone=false;
+
+  const CX=W/2, bY=H*0.72, tY=H*0.55;
+  const bRx=W*0.38, bRy=bRx*0.3, bH=H*0.25;
+  const tRx=W*0.255, tRy=tRx*0.3, tH=H*0.19;
+
+  function drawTier(c,cx,cy,rx,ry,h,topC,cols,ang,es){
+    const n=cols.length, sa=Math.PI*2/n;
+    const order=[];
+    for(let i=0;i<n;i++)order.push({i,cos:Math.cos(ang+i*sa+sa/2)});
+    order.sort((a,b)=>a.cos-b.cos);
+    order.forEach(({i})=>{
+      const a1=ang+i*sa,a2=ang+(i+1)*sa,am=(a1+a2)/2,cv2=Math.cos(am);
+      const x1=cx+rx*Math.cos(a1),y1=cy+ry*Math.sin(a1);
+      const x2=cx+rx*Math.cos(a2),y2=cy+ry*Math.sin(a2);
+      c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.lineTo(x2,y2+h);c.lineTo(x1,y1+h);c.closePath();
+      c.fillStyle=cols[i%cols.length];c.fill();
+      const bright=0.5+0.5*cv2;
+      const g=c.createLinearGradient(x1,0,x2,0);
+      g.addColorStop(0,`rgba(0,0,0,${0.4*(1-bright)})`);
+      g.addColorStop(0.45,`rgba(255,255,255,${0.22*bright})`);
+      g.addColorStop(1,`rgba(0,0,0,${0.35*(1-bright)})`);
+      c.fillStyle=g;c.fill();
+      if(cv2>0.25){
+        const tx=cx+rx*0.7*Math.cos(am),ty=cy+ry*0.7*Math.sin(am)+h*0.5;
+        c.save();c.globalAlpha=Math.min(1,cv2*1.5);
+        c.font=Math.round(h*0.38)+'px serif';
+        c.textAlign='center';c.textBaseline='middle';
+        c.fillText(es[i%es.length],tx,ty);c.restore();
+      }
+    });
+    const tg=c.createRadialGradient(cx,cy,0,cx,cy,rx);
+    tg.addColorStop(0,topC+'dd');tg.addColorStop(1,topC+'88');
+    c.beginPath();c.ellipse(cx,cy,rx,ry,0,0,Math.PI*2);
+    c.fillStyle=tg;c.fill();
+    c.strokeStyle='rgba(255,255,255,0.3)';c.lineWidth=1.5;c.stroke();
+    for(let i=0;i<12;i++){
+      const a=i*Math.PI*2/12;
+      const fx=cx+rx*0.78*Math.cos(a),fy=cy+ry*0.78*Math.sin(a);
+      c.beginPath();c.arc(fx,fy,rx*0.065,0,Math.PI*2);
+      c.fillStyle='rgba(255,255,255,0.82)';c.fill();
+    }
+  }
+
+  function drawTierC(c,side,cx,cy,rx,ry,h,topC,cols,ang,es){
+    c.save();c.beginPath();
+    if(side==='L')c.rect(0,0,cx,H);else c.rect(cx,0,W,H);
+    c.clip();drawTier(c,cx,cy,rx,ry,h,topC,cols,ang,es);c.restore();
+  }
+
+  function drawCandle(c,cx,cy){
+    if(candleBlown)return;
+    const cw=W*0.032,ch=W*0.1;
+    const bg=c.createLinearGradient(cx-cw,0,cx+cw,0);
+    bg.addColorStop(0,'#f5e6c8');bg.addColorStop(0.5,'#fffde7');bg.addColorStop(1,'#e8d5b0');
+    c.beginPath();c.roundRect(cx-cw,cy-ch,cw*2,ch,3);c.fillStyle=bg;c.fill();
+    c.beginPath();c.moveTo(cx,cy-ch);c.lineTo(cx,cy-ch+ch*0.22);
+    c.strokeStyle='#888';c.lineWidth=1.2;c.stroke();
+    const flk=Math.sin(Date.now()*0.012)*2.5;
+    const fh=W*0.13,fr=W*0.048;
+    const fg=c.createRadialGradient(cx,cy-ch*0.55,2,cx,cy-ch*0.55,fr*3.2);
+    fg.addColorStop(0,'rgba(255,255,210,0.95)');
+    fg.addColorStop(0.25,'rgba(255,220,50,0.92)');
+    fg.addColorStop(0.6,'rgba(255,100,0,0.7)');
+    fg.addColorStop(1,'rgba(255,60,0,0)');
+    c.beginPath();
+    c.moveTo(cx,cy-ch);
+    c.bezierCurveTo(cx+fr*1.5+flk,cy-ch*1.22,cx+fr*1.1+flk,cy-ch*1.65,cx+flk*0.4,cy-ch*1.82);
+    c.bezierCurveTo(cx-fr*1.1+flk,cy-ch*1.65,cx-fr*1.5+flk,cy-ch*1.22,cx,cy-ch);
+    c.fillStyle=fg;c.fill();
+    const ig=c.createRadialGradient(cx,cy-ch*1.38,0,cx,cy-ch*1.38,fr*1.4);
+    ig.addColorStop(0,'rgba(255,255,255,0.88)');ig.addColorStop(1,'rgba(255,255,200,0)');
+    c.beginPath();c.ellipse(cx,cy-ch*1.38,fr*0.75,fr*1.3,0,0,Math.PI*2);
+    c.fillStyle=ig;c.fill();
+  }
+
+  function frame(){
+    ctx.clearRect(0,0,W,H);
+    if(!isSplit){
+      cAngle+=0.013;
+      drawTier(ctx,CX,bY,bRx,bRy,bH,'#f8bbd9',colB,cAngle,ems);
+      drawTier(ctx,CX,tY,tRx,tRy,tH,'#fce4ec',colT,cAngle+0.6,ems);
+      drawCandle(ctx,CX,tY);
+    } else {
+      splitProg=Math.min(1,splitProg+0.022);
+      const ease=splitProg*(2-splitProg);
+      const off=ease*W*0.28,tilt=ease*0.22;
+      ctx.save();ctx.translate(-off,ease*H*0.03);ctx.rotate(-tilt);
+      drawTierC(ctx,'L',CX,bY,bRx,bRy,bH,'#f8bbd9',colB,cAngle,ems);
+      drawTierC(ctx,'L',CX,tY,tRx,tRy,tH,'#fce4ec',colT,cAngle+0.6,ems);
+      ctx.restore();
+      ctx.save();ctx.translate(off,ease*H*0.03);ctx.rotate(tilt);
+      drawTierC(ctx,'R',CX,bY,bRx,bRy,bH,'#f8bbd9',colB,cAngle,ems);
+      drawTierC(ctx,'R',CX,tY,tRx,tRy,tH,'#fce4ec',colT,cAngle+0.6,ems);
+      ctx.restore();
+      if(ease<0.35){
+        ctx.beginPath();ctx.moveTo(CX,H*0.1);ctx.lineTo(CX,H*0.92);
+        ctx.strokeStyle=`rgba(255,255,255,${0.95*(1-ease/0.35)})`;
+        ctx.lineWidth=4;ctx.shadowColor='rgba(255,200,255,1)';ctx.shadowBlur=22;
+        ctx.stroke();ctx.shadowBlur=0;
+      }
+      if(ease>=1&&!splitDone){splitDone=true;setTimeout(()=>goTo(3),500);}
+    }
+    cakeRAF=requestAnimationFrame(frame);
+  }
+  frame();
+
+  /* Slash gesture */
+  const slc=document.getElementById('slashCanvas');
+  const slCtx=slc.getContext('2d');
+  slc.width=window.innerWidth;slc.height=window.innerHeight;
+  slc.style.pointerEvents='all';
+  let drawing=false,pts=[],slDone=false;
+  const gp=e=>e.touches?{x:e.touches[0].clientX,y:e.touches[0].clientY}:{x:e.clientX,y:e.clientY};
+  const sd=e=>{if(slDone)return;drawing=true;pts=[gp(e)];};
+  const sm=e=>{
+    if(!drawing||slDone)return;e.preventDefault();
+    pts.push(gp(e));
+    slCtx.clearRect(0,0,slc.width,slc.height);
+    slCtx.beginPath();slCtx.strokeStyle='rgba(255,255,255,0.9)';slCtx.lineWidth=4;slCtx.lineCap='round';
+    slCtx.shadowColor='rgba(255,220,255,1)';slCtx.shadowBlur=18;
+    slCtx.moveTo(pts[0].x,pts[0].y);pts.forEach(p=>slCtx.lineTo(p.x,p.y));slCtx.stroke();
+  };
+  const se=()=>{
+    if(!drawing||slDone)return;drawing=false;
+    if(pts.length<4){slCtx.clearRect(0,0,slc.width,slc.height);return;}
+    const dx=pts[pts.length-1].x-pts[0].x,dy=pts[pts.length-1].y-pts[0].y;
+    if(Math.sqrt(dx*dx+dy*dy)>70){
+      slDone=true;
+      setTimeout(()=>{slCtx.clearRect(0,0,slc.width,slc.height);slc.style.pointerEvents='none';},300);
+      isSplit=true;
+      document.getElementById('blowBtn').style.display='none';
+      document.getElementById('slashHint2').style.display='none';
+    } else slCtx.clearRect(0,0,slc.width,slc.height);
+  };
+  slc.addEventListener('touchstart',sd,{passive:true});
+  slc.addEventListener('touchmove',sm,{passive:false});
+  slc.addEventListener('touchend',se);
+  slc.addEventListener('mousedown',sd);
+  slc.addEventListener('mousemove',sm);
+  slc.addEventListener('mouseup',se);
+}
+
+function blowCandle(){
+  if(candleBlown)return;
+  candleBlown=true;
+  document.getElementById('blowBtn').textContent='🎉 Đã thổi!';
+  setTimeout(()=>{
+    document.getElementById('blowBtn').style.display='none';
+    document.getElementById('slashHint2').style.display='none';
+    goTo(3);
+  },700);
+}
+
+/* ═══ ENVELOPE ═══ */
+let envDone=false;
+function initEnvelope(){
+  envDone=false;
+  document.getElementById('envFlap').classList.remove('open');
+  document.getElementById('waxSeal').classList.remove('gone');
+  document.getElementById('waxSeal').style.display='flex';
+  document.getElementById('envHint3').style.display='block';
+  document.getElementById('envWrap').classList.remove('opening');
+  const ew=document.getElementById('envWrap');
+  ew.style.opacity='';ew.style.transition='';
+  document.getElementById('letterOverlay').classList.remove('show');
+}
+function openEnvelope(){
+  if(envDone)return;envDone=true;
+  document.getElementById('waxSeal').classList.add('gone');
+  document.getElementById('envHint3').style.display='none';
+  document.getElementById('envWrap').classList.add('opening');
+  setTimeout(()=>document.getElementById('envFlap').classList.add('open'),350);
+  setTimeout(()=>{
+    const ew=document.getElementById('envWrap');
+    ew.style.opacity='0';ew.style.transition='opacity 0.5s';
+    document.getElementById('letterOverlay').classList.add('show');
+    launchConfetti();
+  },1100);
+}
+function showHeartScreen(){
+  document.getElementById('letterOverlay').classList.remove('show');
+  goTo(4);
+}
+
+/* ═══ HEART COLLAGE ═══ */
+let heartRAF=null;
+function initHeartCollage(){
+  if(heartRAF)cancelAnimationFrame(heartRAF);
+  const cv=document.getElementById('heartCanvas');
+  const vw=window.innerWidth,vh=window.innerHeight;
+  const sz=Math.min(vw*0.95,(vh-130)*0.94,480);
+  const W=sz,H=sz;
+  const dpr=window.devicePixelRatio||1;
+  cv.width=W*dpr;cv.height=H*dpr;
+  cv.style.width=W+'px';cv.style.height=H+'px';
+  const ctx=cv.getContext('2d');ctx.scale(dpr,dpr);
+
+  const N=28;
+  const heartPts=[];
+  for(let i=0;i<N;i++){
+    const t=(i/N)*Math.PI*2;
+    const hx=16*Math.pow(Math.sin(t),3);
+    const hy=-(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t));
+    heartPts.push({x:hx,y:hy,t});
+  }
+  const minX=Math.min(...heartPts.map(p=>p.x)),maxX=Math.max(...heartPts.map(p=>p.x));
+  const minY=Math.min(...heartPts.map(p=>p.y)),maxY=Math.max(...heartPts.map(p=>p.y));
+  const pad=0.1;
+  const mapped=heartPts.map(p=>({
+    x:(p.x-minX)/(maxX-minX)*W*(1-2*pad)+W*pad,
+    y:(p.y-minY)/(maxY-minY)*H*(1-2*pad)+H*pad,
+    t:p.t
+  }));
+
+  const cW=W*0.155,cH=W*0.12;
+  let progress=0,floating=false,floatStart=0;
+
+  function drawCard(c,cx,cy,w,h,rot,idx,alpha=1){
+    c.save();c.globalAlpha=alpha;c.translate(cx,cy);c.rotate(rot);
+    c.shadowColor='rgba(0,0,0,0.18)';c.shadowBlur=8;c.shadowOffsetX=2;c.shadowOffsetY=3;
+    c.fillStyle='white';
+    c.beginPath();c.roundRect(-w/2-3,-h/2-3,w+6,h+10,4);c.fill();
+    c.shadowBlur=0;c.shadowOffsetX=0;c.shadowOffsetY=0;
+    const imgObj=imgCache[idx];
+    if(imgObj&&imgObj.complete&&imgObj.naturalWidth>0){
+      c.save();c.beginPath();c.roundRect(-w/2,-h/2,w,h,2);c.clip();
+      c.drawImage(imgObj,-w/2,-h/2,w,h);c.restore();
+    } else {
+      const pal=PHOTO_PALETTES[idx%PHOTO_PALETTES.length];
+      const pg=c.createLinearGradient(-w/2,-h/2,w/2,h/2);
+      pg.addColorStop(0,pal[0]);pg.addColorStop(0.4,pal[1]);
+      pg.addColorStop(0.7,pal[2]);pg.addColorStop(1,pal[3]);
+      c.fillStyle=pg;c.beginPath();c.roundRect(-w/2,-h/2,w,h,2);c.fill();
+    }
+    c.restore();
+  }
+
+  function frame(){
+    ctx.clearRect(0,0,W,H);
+    const shown=Math.min(N,Math.floor(progress));
+    const frac=progress-shown;
+    if(!floating){
+      for(let i=0;i<shown;i++){
+        const p=mapped[i];
+        const rot=(p.t*0.4+i*0.15)%(Math.PI*2)-Math.PI;
+        drawCard(ctx,p.x,p.y,cW,cH,rot*0.35,i%12);
+      }
+      if(shown<N&&frac>0){
+        const p=mapped[shown];
+        const rot=(p.t*0.4+shown*0.15)%(Math.PI*2)-Math.PI;
+        const sc2=frac+(1-frac)*1.3;
+        drawCard(ctx,p.x,p.y,cW*sc2,cH*sc2,rot*0.35,shown%12,frac);
+      }
+      if(progress<N)progress+=0.22;
+      else if(!floating){floating=true;floatStart=Date.now();}
+    } else {
+      const elapsed=(Date.now()-floatStart)/1000;
+      for(let i=0;i<N;i++){
+        const p=mapped[i];
+        const floatY=Math.sin(elapsed+i*0.4)*2.8;
+        const rot=(p.t*0.4+i*0.15)%(Math.PI*2)-Math.PI;
+        const rotAnim=rot*0.35+Math.sin(elapsed*0.7+i*0.3)*0.035;
+        drawCard(ctx,p.x,p.y+floatY,cW,cH,rotAnim,i%12);
+      }
+      if(elapsed>2.5){cancelAnimationFrame(heartRAF);heartRAF=null;goTo(5);return;}
+    }
+    heartRAF=requestAnimationFrame(frame);
+  }
+  frame();
+}
+
+/* ═══ SCREEN 5 – BALLOONS ═══ */
+let balloonRAF=null;
+function initBalloons(){
+  if(balloonRAF)cancelAnimationFrame(balloonRAF);
+  const cv=document.getElementById('balloonCanvas');
+  const W=window.innerWidth,H=window.innerHeight;
+  const dpr=window.devicePixelRatio||1;
+  cv.width=W*dpr;cv.height=H*dpr;
+  cv.style.width=W+'px';cv.style.height=H+'px';
+  const ctx=cv.getContext('2d');ctx.scale(dpr,dpr);
+
+  const sizes=[
+    {rw:0.17,rh:0.22},{rw:0.13,rh:0.17},{rw:0.20,rh:0.26},{rw:0.11,rh:0.14},
+    {rw:0.15,rh:0.20},{rw:0.10,rh:0.13},{rw:0.18,rh:0.23},{rw:0.12,rh:0.16},
+    {rw:0.14,rh:0.19},{rw:0.09,rh:0.12},{rw:0.16,rh:0.21},{rw:0.10,rh:0.14},
+  ];
+  const photos=[];
+  for(let i=0;i<12;i++){
+    const s=sizes[i];
+    const rw=s.rw*Math.min(W,H),rh=s.rh*Math.min(W,H);
+    const col=0.07+(i%4)*0.22+(Math.random()-0.5)*0.1;
+    photos.push({
+      x:col*W,startY:H+rh+Math.random()*H*0.5,
+      rw,rh,speed:(35+Math.random()*30)*(0.12/s.rw),
+      wobble:Math.random()*Math.PI*2,wobbleSpeed:0.4+Math.random()*0.5,
+      wobbleAmp:6+Math.random()*14,delay:i*380+Math.random()*200,
+      startTime:null,idx:i,opacity:0,stringLen:rh*0.9+20,
+    });
+  }
+  const globalStart=Date.now();
+
+  function drawPhotoOval(c,p,now){
+    if(p.startTime===null){if(now-globalStart<p.delay)return;p.startTime=now;}
+    const elapsed=(now-p.startTime)/1000;
+    const rise=elapsed*p.speed;
+    const wx=p.x+Math.sin(p.wobble+elapsed*p.wobbleSpeed)*p.wobbleAmp;
+    const wy=p.startY-rise;
+    p.opacity=Math.min(1,elapsed*1.8);
+    if(p.opacity<=0||wy<-p.rh*2)return;
+    c.save();c.globalAlpha=p.opacity;
+    const stringEndX=wx+p.wobbleAmp*0.3,stringEndY=wy+p.rh+p.stringLen;
+    c.beginPath();c.moveTo(wx,wy+p.rh);
+    c.quadraticCurveTo(wx+p.wobbleAmp*0.5,wy+p.rh+p.stringLen*0.55,stringEndX,stringEndY);
+    c.strokeStyle='rgba(200,150,180,0.5)';c.lineWidth=1.2;c.stroke();
+    c.shadowColor='rgba(0,0,0,0.15)';c.shadowBlur=14;c.shadowOffsetX=3;c.shadowOffsetY=5;
+    c.fillStyle='white';c.beginPath();c.ellipse(wx,wy,p.rw+5,p.rh+5,0,0,Math.PI*2);c.fill();
+    c.shadowBlur=0;c.shadowOffsetX=0;c.shadowOffsetY=0;
+    c.beginPath();c.ellipse(wx,wy,p.rw,p.rh,0,0,Math.PI*2);c.clip();
+    const imgObj=imgCache[p.idx];
+    if(imgObj&&imgObj.complete&&imgObj.naturalWidth>0){
+      const iw=imgObj.naturalWidth,ih=imgObj.naturalHeight;
+      const scaleX=(p.rw*2)/iw,scaleY=(p.rh*2)/ih;
+      const scale=Math.max(scaleX,scaleY);
+      const dw=iw*scale,dh=ih*scale;
+      c.drawImage(imgObj,wx-dw/2,wy-dh/2,dw,dh);
+    } else {
+      const pal=PHOTO_PALETTES[p.idx%PHOTO_PALETTES.length];
+      const pg=c.createRadialGradient(wx-p.rw*0.2,wy-p.rh*0.2,0,wx,wy,Math.max(p.rw,p.rh));
+      pg.addColorStop(0,pal[0]);pg.addColorStop(0.45,pal[1]);
+      pg.addColorStop(0.75,pal[2]);pg.addColorStop(1,pal[3]);
+      c.fillStyle=pg;c.beginPath();c.ellipse(wx,wy,p.rw,p.rh,0,0,Math.PI*2);c.fill();
+    }
+    c.restore();
+    c.save();c.globalAlpha=p.opacity*0.18;
+    c.beginPath();c.ellipse(wx,wy,p.rw,p.rh,0,0,Math.PI*2);c.clip();
+    const shine=c.createRadialGradient(wx-p.rw*0.4,wy-p.rh*0.4,0,wx,wy,Math.max(p.rw,p.rh)*0.9);
+    shine.addColorStop(0,'rgba(255,255,255,0.85)');
+    shine.addColorStop(0.4,'rgba(255,255,255,0.1)');
+    shine.addColorStop(1,'rgba(255,255,255,0)');
+    c.fillStyle=shine;c.fillRect(wx-p.rw,wy-p.rh,p.rw*2,p.rh*2);
+    c.restore();
+  }
+
+  function frame(){
+    ctx.clearRect(0,0,W,H);
+    const now=Date.now();
+    const sorted=[...photos].sort((a,b)=>a.rw-b.rw);
+    for(const p of sorted)drawPhotoOval(ctx,p,now);
+    balloonRAF=requestAnimationFrame(frame);
+  }
+  frame();
+}
+
+/* ═══ CONFETTI ═══ */
+function launchConfetti(){
+  const cols=['#ff69b4','#ffd700','#ff1493','#ffb6c1','#fff','#e91e8c','#f48fb1','#c2185b'];
+  for(let i=0;i<90;i++){
+    setTimeout(()=>{
+      const c=document.createElement('div');c.className='confetti-piece';
+      c.style.cssText=`left:${Math.random()*100}vw;background:${cols[~~(Math.random()*cols.length)]};animation-duration:${1.5+Math.random()*2.5}s;width:${5+Math.random()*9}px;height:${5+Math.random()*9}px;border-radius:${Math.random()>0.5?'50%':'2px'};transform:rotate(${Math.random()*360}deg)`;
+      document.body.appendChild(c);setTimeout(()=>c.remove(),5000);
+    },i*28);
+  }
+}
+
+/* ═══ RESTART ═══ */
+function restartAll(){
+  if(cakeRAF){cancelAnimationFrame(cakeRAF);cakeRAF=null;}
+  if(heartRAF){cancelAnimationFrame(heartRAF);heartRAF=null;}
+  if(balloonRAF){cancelAnimationFrame(balloonRAF);balloonRAF=null;}
+  stopMusic(); musicPlaying=false;
+  document.getElementById('musicBtn').textContent='🔇';
+  document.getElementById('musicBtn').classList.remove('playing','visible');
+  document.getElementById(SID[curScreen]).classList.remove('active');
+  curScreen='Login';
+  document.getElementById('screenLogin').classList.add('active');
+  document.getElementById('loginName').value='';
+  document.getElementById('loginPass').value='';
+  document.getElementById('loginError').style.display='none';
+  document.getElementById('loginBtn').textContent='Mở quà của em 🎁';
+  document.getElementById('giftBox').style.cssText='';
+  document.getElementById('letterOverlay').classList.remove('show');
+  const slc=document.getElementById('slashCanvas');
+  slc.getContext('2d').clearRect(0,0,slc.width,slc.height);
+  slc.style.pointerEvents='none';
+  envDone=false;candleBlown=false;
+  const ew=document.getElementById('envWrap');
+  ew.style.opacity='';ew.style.transition='';
+}
+</script>
+</body>
+</html>
