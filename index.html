@@ -457,24 +457,25 @@ html,body{height:100%;width:100%;overflow:hidden;font-family:'Quicksand',sans-se
 <script>
 /* ═══ ẢNH ═══ */
 // imgCache sẽ được điền khi người dùng chọn ảnh
+/* ═══ DANH SÁCH ẢNH – chỉ sửa đoạn này khi muốn đổi ảnh ═══ */
 const PHOTOS = [
   './anh/1.jpg',
   './anh/2.jpg',
   './anh/3.jfif',
   './anh/4.jpg',
+  './anh/1.jpg',
+  './anh/2.jpg',
+  './anh/3.jfif',
   './anh/4.jpg',
-  './anh/4.jpg',
-  './anh/4.jpg',
-  './anh/4.jpg',
-  './anh/4.jpg',
-  './anh/4.jpg',
-  './anh/4.jpg',
+  './anh/1.jpg',
+  './anh/2.jpg',
+  './anh/3.jfif',
   './anh/4.jpg',
 ];
-PHOTOS.forEach((url, i) => {
-  if (url) { const img = new Image(); img.src=url; imgCache[i]=img; }
-});
 const imgCache = {};
+PHOTOS.forEach((url, i) => {
+  if (url) { const img = new Image(); img.src = url; imgCache[i] = img; }
+});
 let totalPhotosLoaded = 0;
 
 function handlePhotos(input) {
@@ -770,22 +771,23 @@ function initCake(){
 
       const bright=0.5+0.5*cv2;
 
-      if(hasPhotos && cv2>-0.1){
+      if(hasPhotos && cv2>-0.05){
         const imgObj=imgCache[i%keys.length];
         if(imgObj&&imgObj.complete&&imgObj.naturalWidth>0){
           c.save(); c.clip();
-          // Vẽ ảnh căn giữa mặt slice, scale cover
-          const faceCx=(x1+x2)/2;
-          const faceCy=(y1+y2)/2+h/2;
+          // Dùng toạ độ trung tâm thực của mặt slice
+          const mx=(x1+x2)/2, my=Math.min(y1,y2)+h/2;
           const iw=imgObj.naturalWidth,ih=imgObj.naturalHeight;
-          const scale=Math.max(sliceW/iw,h/ih)*1.1;
-          c.drawImage(imgObj,faceCx-iw*scale/2,faceCy-ih*scale/2,iw*scale,ih*scale);
-          // Shading
+          const scale=Math.max(sliceW/iw, h/ih)*1.15;
+          c.drawImage(imgObj, mx-iw*scale/2, my-ih*scale/2, iw*scale, ih*scale);
+          // Shading theo độ sáng
           const g=c.createLinearGradient(x1,0,x2,0);
-          g.addColorStop(0,`rgba(0,0,0,${0.5*(1-bright)})`);
-          g.addColorStop(0.5,`rgba(255,255,255,${0.06*bright})`);
-          g.addColorStop(1,`rgba(0,0,0,${0.45*(1-bright)})`);
-          c.fillStyle=g; c.fillRect(x1-2,y1,sliceW+4,h+2);
+          g.addColorStop(0,`rgba(0,0,0,${0.52*(1-bright)})`);
+          g.addColorStop(0.5,`rgba(255,255,255,${0.04*bright})`);
+          g.addColorStop(1,`rgba(0,0,0,${0.48*(1-bright)})`);
+          c.fillStyle=g;
+          c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.lineTo(x2,y2+h);c.lineTo(x1,y1+h);c.closePath();
+          c.fill();
           c.restore();
         } else {
           c.fillStyle=cols[i%cols.length];c.fill();
